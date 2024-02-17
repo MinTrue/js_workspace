@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    let pic;
+    let x =0;
+    let step =15;
+    let dx= 400;
+    let st;
+
+    function init(){
+      pic =document.getElementById("pic");
+      pic.style.position="absolute";
+      pic.style.left=0+"px";
+      pic.style.top=200+"px";
+    }
+    function move(){
+      x += step;
+      pic.style.left=x+"px";
+      if(x<=0 || x>=dx){
+        step = step* -1
+      }
+      pic.style.left=x+"px";
+    
+    function manual(){
+      stopInterval();
+      move();
+    }
+    function auto(){
+      stopInterval();
+      st = setInterval("move()" ,30);
+    }
+    function stopInterval(){
+      if (st != undefined){
+        clearInterval(st);
+      }
+    }
+
+    }
+    addEventListener("load", function(){
+      init();
+    })
+  </script>
+</head>
+<body>
+  <button onClick="manual()" id="delfBt">수동</button>
+  <button onClick="auto()">자동</button>
+  <img src="../images/chicken.webp" id="pic">
+</body>
+</html>

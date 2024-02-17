@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>갤러리</title>
+  <style>
+    #wrapper{
+      width: 1000px;
+      height: 1000px;
+      background-color: aliceblue;
+      margin: 0 auto;
+    }
+    #header{
+      width: 100%;
+      height: 200px;
+      background-color: aqua;
+      text-align: center;
+      line-height: 200px;
+    }
+    #content{
+      width: 100%;
+      height: 800px;
+      background-color: blue;
+    }
+    #content img{
+      width: 100%;
+      height: 100%;
+      opacity: 1;
+    }
+  </style>
+  <script>
+    let n =1;
+    let op =1
+
+    function next(){
+      n = n+1;
+      console.log("./images/mt/m-"+n+".jpg")
+      let photo = document.getElementById("photo");
+      photo.src="./images/mt/m-"+n+".jpg";
+    }
+
+    function prev(){
+      n = n-1;
+      let photo = document.getElementById("photo");
+      photo.src="./images/mt/m-"+n+".jpg";
+    }
+    
+    function plus(){
+      op = op - 0.1;
+      let photo = document.getElementById("photo")
+      photo.style.opacity=op;
+    }
+    
+    function minus(){
+      op = op +0.1;
+      let photo = document.getElementById("photo")
+      photo.style.opacity=op;
+    }
+  </script>
+</head>
+<body>
+  <div id="wrapper">
+    <div id="header">
+      <button onClick="prev()">이전</button>
+      <button onClick="plus()">투명</button>
+      <button onClick="minus()">불투명</button>
+      <button onClick="next()">다음</button>
+    </div>
+    <div id="content">
+      <img src="./images/mt/m-1.jpg" id="photo"> 
+    </div>
+  </div>
+</body>
+</html>

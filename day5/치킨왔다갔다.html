@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>숙제</title>
+  <style>
+  </style>
+  <script>
+    let pic;
+    let x = 0; //누적시키거나, 감소시켜야 하므로 
+    let step = 15; //몇 걸음씩 움직일지를 결정짓는 즉 속도를 결정짓는 변수입니다. 
+    //결국 이 변수가 양수이면 우측으로 이동하고, 음수이면 좌측으로 이동하게 됩니다.
+
+    let dx = 400; //우측 최대 한계지점 
+    let st;  //setInterval을 가리키기 위한 변수 , 추후 이 변수를 이용하여  기존에 실행되고 있는 자동함수 setInterval을 멈출 수 있습니다
+
+
+    function init() {
+      //문서내의 닭다리 이미지의 위치를 지정해본다(body기준 절대위치)
+      pic = document.getElementById("pic");
+      pic.style.position = "absolute"
+      pic.style.left = 0 + "px";
+      pic.style.top = 150 + "px";
+    }
+
+    // x축으로의 이동함수 정의
+    function move() {
+
+      //닭다리는 우측으로 이동할지, 좌측으로 이동할지 결정되면 안되기 때문에 결국 x에 누적될 값은 변수로 둬야 합니다.
+      //왜냐구요? 제가 항상 쓰는 표현있죠? 변하니까요~~ㅋㅋ
+      x += step;  //사실상 step이 이동 방향을 결정하는 것임  5이면 우측, -5이면 좌측
+      // x = x+step;
+      pic.style.left = x + "px";
+
+      if (x <= 0 || x >= dx) {   //x값이 좌측 최소 한계지점이하 이거나 우측 최대한계 지점이상일때마다 step의 부호를 반대로 뒤집습니다
+        step = step * -1;  //기존의 step 값에 -1을 곱하면 부호가 반대로 뒤집힙니다
+      }
+      pic.style.left = x + "px";
+
+    }
+
+    function manual() {
+      stopInterval(); //수동버튼을 누를때도 혹시나, 기존의 setInterval이 실행중이라면 수동에 방해를 주면 안되므로 setInterval을 멈춥니다
+      move();
+    }
+
+    //setInterval() 은 버튼을 누를때 마다 생성되기 때문에 , 버튼을 2번 이상 누르면 
+    //setInterval이 누적되어 속도가 점점 더 빨라집니다. 따라서 자동 버튼을 여러번 누르더라도 
+    //기존의 setInterval() 은 제거하고, 새로운 setInterval() 을 작동시키기 위해 stopInterval() 공통함수를 정의해보았습니다
+    function auto() {
+      stopInterval();
+      st = setInterval("move()", 30); //setInterval을 가동시키고, 전역변수로 빼둡니다. 그래야 나중에 멈출 수 있거든요
+    }
+
+    function stopInterval() {
+      if (st != undefined) {//st 변수가 undefined 가 아니라면..의 의미는 st 존재한다면
+                // 즉 기존의 setInterval이 실행되고 있다면 정도로 이해하시면 될 거 같습니다
+        clearInterval(st);//setInterval 종료 
+      }
+    }
+    addEventListener("load", function () {
+      init();
+    })
+  </script>
+</head>
+
+<body>
+  <button onClick="manual()" id="selfBt">수동</button>
+  <button onClick="auto()">자동</button>
+  <img src="../images/chicken.webp" id="pic">
+</body>
+
+</html>

@@ -1,0 +1,24 @@
+<script>
+  /*
+  11. 크기가 20인 배열을 대상으로, 첫번째 공간부터 10번째 공간까지는 0을 대입하고, 11번째부터 20번째
+      공간 까지는 1을 대입하되, 배열내의 모든 데이터를 출력하세요.
+  */
+  
+  let arr = new Array(20);
+
+
+  for(let i=0;i<arr.length;i++){
+    //0번째부터~ 9번째까지(즉 전체 배열 길이의 절반미만까지는...)
+    /*
+    if(i < arr.length/2 ){
+        arr[i]=0;
+    }else{
+        arr[i]=1;
+    }
+    */
+    arr[i]=(i<arr.length/2)? 0:1;
+    console.log(arr[i]);
+}
+
+  
+</script>

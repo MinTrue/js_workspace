@@ -1,0 +1,31 @@
+<script>
+  /*
+  15.다음과 같이 출력되도록 반복문을 작성해 보세요
+
+  1 
+  짝수
+  3
+  짝수
+  5
+  짝수
+  7
+  짝수
+  9
+  짝수
+  */
+
+  for(let i=1;i<=10;i++){
+    /*
+    //홀수일때는 그냥 숫자
+    if((i%2)!=0){
+      document.write(i+"<br>");
+    }else{
+    //아닐때는 "짝수"
+      document.write("짝수<br>");
+    }
+    */
+    let result = ((i%2)!=0)? i+"<br>":"짝수<br>";
+    document.write(result);
+  }
+
+</script>

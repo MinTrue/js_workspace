@@ -1,0 +1,29 @@
+<script>
+  /*
+  16.다음과 같이 출력 결과가 나오도록 for문을 작성해보세요
+
+  1회반복
+  2회반복
+  ★
+  4회반복
+  5회반복
+  ★
+  7회반복
+  8회반복
+  ★
+  10회반복
+  */
+
+  for(let i=1;i<=10;i++){
+    /*
+    if((i%3) !=0){
+      document.write(i+"회반복<br>");
+    } else{
+      document.write("★<br>")
+    }
+    */
+    let result =((i%3)==0)? "★<br>":i+"회반복<br>";
+    document.write(result);
+  }
+
+</script>

@@ -1,0 +1,22 @@
+<script>
+  /*
+    다음과 같은 출력 결과가 나오도록 for문을 작성해보세요
+    ☆ ☆ ☆ ☆ ★
+    ☆ ☆ ☆ ☆ ★
+    ☆ ☆ ☆ ☆ ★
+    ☆ ☆ ☆ ☆ ★
+    ☆ ☆ ☆ ☆ ★
+  */
+
+  for(let i=1;i<=25;i++){
+    //5번째 마다 검정별<br> 출력하고.
+    // if((i%5)==0){
+    //   document.write("★<br>")
+    // } else{
+    //   //아닌경우 흰별
+    //   document.write("☆")
+    // }
+    let result = ((i%5)==0)? "★<br>":"☆";
+    document.write(result);
+  }
+</script>

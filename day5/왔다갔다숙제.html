@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>숙제</title>
+  <style>
+  </style>
+  <script>
+    let pic;
+    let x=0; //누적시키거나, 감소시켜야 하므로 
+    let dx=400; // 벽에 튕기기 위해 범위 설정
+    let direction= 1; // 오른쪽으로 가는지, 왼쪽으로 가는지 판단하는 변수
+    let st; //setInterval을 가리키기 위한 변수, 이 변수르 이용해 기존에 실행 되는 setInterval을 멈춤 가능
+
+    function init(){
+      //문서내의 닭다리 이미지의 위치를 지정해본다(body기준 절대위치)
+      pic = document.getElementById("pic");
+      pic.style.position="absolute"
+      pic.style.left=0+"px";
+      pic.style.top=150+"px";
+    }
+
+    // x축으로의 이동함수 정의
+    function move(){
+      if(x > dx){ // 오른쪽 벽에 닿으면
+        direction = -1; // 왼쪽으로 이동
+      } else if(x < 0){ //왼쪽 벽에 닿으면
+        direction =1; //오른쪽으로 이동
+      }
+      x += direction *20 //방향에 따라 이동
+      pic.style.left= x+"px";
+    }
+    function manual(){
+      stopInterval();
+      move();
+    }
+    function auto(){
+      stopInterval();
+      st = setInterval("move()", 30);
+    }
+    function stopInterval(){
+      if (st != undefined){ // st변수가 undefined가 아니면  의미 
+        clearInterval(st);
+        // setInterval 종료
+      }
+    }
+
+    addEventListener("load",function(){
+      init();
+    })
+  </script>
+</head>
+<body>
+  <button onclick="manual()" id="selfBt">수동</button>
+  <button onClick="auto()">자동</button>
+  <img src="../images/chicken.webp" id="pic">
+</body>
+</html>
