@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script>
+    let msg;
+    addEventListener("load",function(){
+      let min = document.getElementsByName("minhyeok");
+      msg = document.getElementById("msg");
+
+      min[1].addEventListener("keyup", function(){
+        //입력한 글자수가 7자에 도달한다면, 성별을 판당하여 메시지 출력
+        if(this.value.length >=7){//입력한 글자=스트링 객체/ 스트링 객체라면 보유한 
+          // property, method()사용가능
+          let gender = (this.value.charAt(0)=="1")? "남성":"여성";
+
+          msg.innerText=`당신은 ${gender}입니다.`;
+        }
+      });
+
+    });
+  </script>
+</head>
+<body>
+  
+  <input type="text" name="minhyeok" placeholder="주민번호 앞자리" maxlength="6">-
+  <input type="text" name="minhyeok" placeholder="*******" maxlength="7">
+  <p id="msg"></p>
+</body>
+</html>
