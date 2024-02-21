@@ -9,6 +9,7 @@ function dan(n){
     document.write(`${n}*${i}=${n*i} <br>`)
   }
 }
+
 /*-----------------------------------------------
 랜덤값 반환하기
 max 값까지의 랜덤한 값 구하기
@@ -29,4 +30,25 @@ function getRandomByRange(min, max){
   let result =min + getRandom(max-min);
   //console.log(result);
   return result;
+}
+
+/*--------------------------------------------------
+두물체간 충돌을 체크하는 함수
+반환값이 true 이며 충돌이다
+----------------------------------------------------*/
+function collisionCheck(box1, box2){
+  //좌측상단 모서리(북서)1사분면
+  let side1 = ((box1.x+box1.width) >= box2.x) && ((box1.y+box1.height) >= box2.y);
+
+  //우측상단 모서리 (북동) 2사분면
+  let side2 = (box1.x <= (box2.x+box2.width)) && ((box1.y+box1.height) >= box2.y);
+
+  //우측하단 모서리(동남) 3사분면 
+  let side3 = (box1.x <= (box2.x+box2.width)) && (box1.y <=(box2.y+box2.height));
+
+  //좌측하단 모서리(서남) 4사분면
+  let side4 = ((box1.x+box1.width) >= box2.x ) && (box1.y <=(box2.y+box2.height));
+
+  //모든 사분면이 true 값일때, 전체를 true본다 즉 충돌로 본다    
+  return (side1 && side2 && side3 && side4);
 }
