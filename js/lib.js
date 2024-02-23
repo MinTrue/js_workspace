@@ -52,3 +52,17 @@ function collisionCheck(box1, box2){
   //모든 사분면이 true 값일때, 전체를 true본다 즉 충돌로 본다    
   return (side1 && side2 && side3 && side4);
 }
+
+/*-----------------------------------------------------
+욕을 검색하여, 순화된 말로 대체하여 반환해주는 함수
+filterLang(대상 문자열, 욕데이터베이스 , 순화 데이터 베이스) 
+메개변수 사용법 replace(a,b)
+-------------------------------------------------------*/
+function filterLang(lang, badArray, goodArray){
+  let str = lang; //필터링 대상이 되는 문자열을 str에 담기
+  for(let i=0;i<badArray.length;i++){ // 욕 데이터베이스 만큼
+    //"야이 개xx야 너 십xx아,"
+    str = str.replace(badArray[i],goodArray[i]);
+  }
+  return str;
+}
